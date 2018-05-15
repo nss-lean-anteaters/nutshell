@@ -8,7 +8,7 @@ const elementBuilder = (tag, parent, content, id) => {
     const parentElement = document.getElementById(`${parent}`)
     const newTag = document.createElement(`${tag}`)
     newTag.textContent = `${content}`
-    newtag.id =`${id}`
+    newTag.id =`${id}`
     parentElement.appendChild(newTag)
 }
 module.exports = elementBuilder
