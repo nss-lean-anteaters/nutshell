@@ -1,0 +1,18 @@
+.friend-card {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+#holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.lanes {
+    min-height: 300px;
+    width: 30%;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+}
