@@ -1,8 +1,9 @@
 {
     "user": [
         {
-
-        }
+            "id": 2,
+            "user": "Ronnie Young"
+                }
     ],
     "friendship": [
         {
