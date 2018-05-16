@@ -7,3 +7,5 @@ function nukeElement (id){
     console.log(element)
     element.parentNode.removeChild(element)
 }
+
+module.exports = nukeElement
