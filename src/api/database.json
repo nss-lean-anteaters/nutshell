@@ -1,33 +1,28 @@
 {
-    "user": [
-        {
-            "id": 2,
-            "user": "Ronnie Young"
-                }
-    ],
-    "friendship": [
-        {
-
-        }
-    ],
-    "tasks": [
-        {
-
-        }
-    ],
-    "articles": [
-        {
-
-        }
-    ],
-    "events": [
-        {
-
-        }
-    ],
-    "chat": [
-        {
-            
-        }
-    ]
+  "user": [
+    {
+      "id": 2,
+      "user": "Ronnie Young"
+    },
+    {
+      "id": "1",
+      "userName": "david",
+      "email": "dfp33"
+    }
+  ],
+  "friendship": [
+    {}
+  ],
+  "tasks": [
+    {}
+  ],
+  "articles": [
+    {}
+  ],
+  "events": [
+    {}
+  ],
+  "chat": [
+    {}
+  ]
 }
