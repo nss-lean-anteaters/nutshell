@@ -3,12 +3,12 @@
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 
-const registerUser = (username, email) => {
+const registerUser = (userName, email) => {
     const users = APIManager.getAllObjects("user")
     const userID = users.length + 1
     users.push({
         userID,
-        username,
+        userName,
         email,
     })
 }
