@@ -4,7 +4,7 @@
 // if user does not exist, add the user to the database and then login
 // redirect to landing page
 const $ = require("jquery")
-const APIManager = require("../api/apiManager")
+const APIManager = require("../../api/apiManager")
 const login = require("./login")
 const adduser = require ("./adduser")
 
