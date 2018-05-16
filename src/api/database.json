@@ -3,7 +3,11 @@
         {
             "id": 2,
             "user": "Ronnie Young"
-                }
+                },
+                {
+                    "id": 3,
+                    "user": "Ronnie Cater"
+                        }    
     ],
     "friendship": [
         {

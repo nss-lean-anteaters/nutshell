@@ -1,5 +1,5 @@
 const $ = require("jquery")
-const tagbuild = require("tagBuilder.js")
+const tagbuild = require("./tagBuilder")
 
 tagbuild("h1", "nsHeader", "Lean Anteaters Nutshell", "headerID")
 tagbuild("button", "headerID", "Register", "registerID")
