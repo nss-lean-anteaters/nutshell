@@ -18,7 +18,7 @@ const userList = function () {
             console.log(user)
             $("#user-section").append(
             `
-                <div class="catalogItem" id="${user.id}">
+                <div class="username" id="${user.id}">
                     <section>
                         ${user.user}
                     </section>
