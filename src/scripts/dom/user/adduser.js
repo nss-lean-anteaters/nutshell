@@ -12,3 +12,5 @@ const registerUser = (username, email) => {
         email,
     })
 }
+
+module.exports = registerUser
