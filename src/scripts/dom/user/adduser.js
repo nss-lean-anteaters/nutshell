@@ -5,13 +5,10 @@ const APIManager = require("../../api/apiManager")
 
 const addUserToDb = (userName, email) => {
     userInfo = {
-        "id": "1",
-        "userName": "david",
-        "email": "dfp33"
+        "userName": userName,
+        "email": email
     }
     APIManager.createObject(userInfo, "user")
-    console.log(APIManager.getAllObjects)
-
 }
 
 module.exports = addUserToDb

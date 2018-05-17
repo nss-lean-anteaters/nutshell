@@ -8,6 +8,11 @@
       "id": "1",
       "userName": "david",
       "email": "dfp33"
+    },
+    {
+      "userName": "jo",
+      "email": "234",
+      "id": 3
     }
   ],
   "friendship": [
