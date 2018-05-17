@@ -20,6 +20,14 @@ const APIManager = Object.create(null, {
             })
         }
     },
+    searchUsers: {
+        value: function (searchValue) {
+            return $.ajax({
+                url: `http://localhost:8088/user?q=${searchValue}`,
+                method: "GET"
+            })
+        }
+    },
     deleteObject: {
         value: function (obj, id) {
             return $.ajax({
