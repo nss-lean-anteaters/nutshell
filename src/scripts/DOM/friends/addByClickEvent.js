@@ -19,12 +19,23 @@ const friendBtnClick = () => {
                 addFriendCard.append(addFriendText)
                 const addFriendBtn = document.createElement("button")
                 addFriendBtn.classList = "addFriend-button"
+                addFriendBtn.setAttribute("id", element.id)
                 addFriendBtn.textContent = "Add Friend"
                 addFriendCard.append(addFriendBtn)
                 friendsOutput.append(addFriendCard)
+
+
+                addFriendBtn.addEventListener("click", function() {
+                    console.log(event.currentTarget.id)
+                    APIManager.createObject("user", "friendship")
+                })
+                    //     console.log(event.currentTarget.id)
+                    // })
             })
     })
 })
 }
 
 friendBtnClick()
+
+module.exports = friendBtnClick
