@@ -1,8 +1,16 @@
-const nukeElement = require("./../Utility/nukedom")
 const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
 const tagbuild = require("./../Utility/tagBuilder")
 
+// Wrap entire registration form in a function
+const registerForm = function () {
+    // Document Ready - Ensure DOM is fully loaded
+    $(document).ready(function () {
+        // Button click opens the register form
+        $("#registerID").on("click", function (event) {
+            console.log(event.currentTarget.id)
+            // Display order form for this animal
+            $("#user-section").empty()
 
 // Button click opens the register form
 $(document).ready(function() {

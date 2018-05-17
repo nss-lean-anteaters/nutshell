@@ -6,20 +6,21 @@
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 const login = require("./login")
+const register = require("./register")
 const adduser = require ("./adduser")
 
 const verifyUser = (username, email) => {
     const users = APIManager.getAllObjects("user")
     let verified = false
-    users.forech((user)=>{
-        if (user.userName === input){
+    users.foreach((user)=>{
+        if (user.userName === username){
             verified = true
-            login(username)
+            loggedIn(username)
         }
     })
     if (verified === false ){
-        registerUser( username, email)
-        login(username)
+        alert("Username not found, please register on Nutshell.")
+        register()
     }
 }
 module.exports = verifyUser
