@@ -9,8 +9,10 @@ const registerForm = function () {
         // Button click opens the register form
         $("#registerID").on("click", function (event) {
             console.log(event.currentTarget.id)
-            // Display order form for this animal
-            $("#user-section").empty()
+            // Ensure the page is cleared
+            $("#holder").empty()
+            $("#headerID").empty()
+
 
 
             // Create login/register form
