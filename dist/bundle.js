@@ -10451,8 +10451,8 @@ const registerForm = function () {
         // Button click opens the register form
         $("#registerID").on("click", function (event) {
             console.log(event.currentTarget.id)
-            // Ensure the page is cleared
-            $("#holder").empty()
+            // Display order form for this animal
+            $("#user-section").empty()
 
 
             // Create login/register form
@@ -10462,6 +10462,7 @@ const registerForm = function () {
             tagbuild("button", "form", "Complete Registration", "", "registerButton")
 
             $("#registerButton").on("click", function (event) {
+                const adduser = require("./adduser")
                 console.log(event.currentTarget.id)
                 let username = $("#username").val()
                 let email = $("#email").val()
@@ -10469,13 +10470,9 @@ const registerForm = function () {
                 console.log(username, email)
                 if (username === "" || email === "") {
                     alert("Please fill all fields...!!!!!!");
-                    // else
-                } // Closes if statement
-                    // {
-
-                    //         // Call validation function here
-                    // }
-
+                }else {
+                    adduser(username, email)
+                }
             }) // Closes register button event listener
 
 
@@ -10484,7 +10481,7 @@ const registerForm = function () {
 } // Closes registerForm function
 
 module.exports = registerForm
-},{"../../api/apiManager":7,"./../Utility/tagBuilder":2,"jquery":1}],6:[function(require,module,exports){
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":2,"./adduser":3,"jquery":1}],6:[function(require,module,exports){
 // event listener for the "submit" button on registration form
 // check inputs against the existing user data
 // if user exists , login
@@ -10798,6 +10795,6 @@ arguments[4][4][0].apply(exports,arguments)
 arguments[4][11][0].apply(exports,arguments)
 },{"dup":11}],27:[function(require,module,exports){
 arguments[4][5][0].apply(exports,arguments)
-},{"../../api/apiManager":7,"./../Utility/tagBuilder":10,"dup":5,"jquery":1}],28:[function(require,module,exports){
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":10,"./adduser":24,"dup":5,"jquery":1}],28:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
 },{"../../api/apiManager":7,"./adduser":24,"./login":25,"./register":27,"dup":6,"jquery":1}]},{},[7,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,8,9,10]);

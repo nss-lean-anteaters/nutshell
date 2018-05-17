@@ -9,8 +9,8 @@ const registerForm = function () {
         // Button click opens the register form
         $("#registerID").on("click", function (event) {
             console.log(event.currentTarget.id)
-            // Ensure the page is cleared
-            $("#holder").empty()
+            // Display order form for this animal
+            $("#user-section").empty()
 
 
             // Create login/register form
@@ -20,6 +20,7 @@ const registerForm = function () {
             tagbuild("button", "form", "Complete Registration", "", "registerButton")
 
             $("#registerButton").on("click", function (event) {
+                const adduser = require("./adduser")
                 console.log(event.currentTarget.id)
                 let username = $("#username").val()
                 let email = $("#email").val()
@@ -27,13 +28,9 @@ const registerForm = function () {
                 console.log(username, email)
                 if (username === "" || email === "") {
                     alert("Please fill all fields...!!!!!!");
-                    // else
-                } // Closes if statement
-                    // {
-
-                    //         // Call validation function here
-                    // }
-
+                }else {
+                    adduser(username, email)
+                }
             }) // Closes register button event listener
 
 
