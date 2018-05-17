@@ -1,37 +1,38 @@
 {
-    "user": [
-        {
-            "id": 2,
-            "user": "Ronnie Young"
-                },
-                {
-                    "id": 3,
-                    "user": "Ronnie Cater"
-                        }    
-    ],
-    "friendship": [
-        {
-
-        }
-    ],
-    "tasks": [
-        {
-
-        }
-    ],
-    "articles": [
-        {
-
-        }
-    ],
-    "events": [
-        {
-
-        }
-    ],
-    "chat": [
-        {
-            
-        }
-    ]
+  "user": [
+    {
+      "id": 2,
+      "user": "Ronnie Young"
+    },
+    {
+      "id": "1",
+      "userName": "david",
+      "email": "dfp33"
+    },
+    {
+      "userName": "jo",
+      "email": "234",
+      "id": 3
+    },
+    {
+      "userName": "jimmy",
+      "email": "bob",
+      "id": 4
+    }
+  ],
+  "friendship": [
+    {}
+  ],
+  "tasks": [
+    {}
+  ],
+  "articles": [
+    {}
+  ],
+  "events": [
+    {}
+  ],
+  "chat": [
+    {}
+  ]
 }
