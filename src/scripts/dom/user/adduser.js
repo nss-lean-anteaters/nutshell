@@ -4,7 +4,7 @@ const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 
 const addUserToDb = (userName, email) => {
-    userInfo = {
+    const userInfo = {
         "userName": userName,
         "email": email
     }

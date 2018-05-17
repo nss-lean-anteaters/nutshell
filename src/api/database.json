@@ -13,6 +13,11 @@
       "userName": "jo",
       "email": "234",
       "id": 3
+    },
+    {
+      "userName": "jimmy",
+      "email": "bob",
+      "id": 4
     }
   ],
   "friendship": [
