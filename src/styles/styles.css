@@ -17,8 +17,19 @@
     padding: 10px;
 }
 
+
 #user-section {
     display: flex;
     width: 30%;
     margin: auto;
+
+.message-card{
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.message-base{
+    border: 1px solid black;
+    margin: 10px;
+
 }
