@@ -10592,8 +10592,35 @@ arguments[4][2][0].apply(exports,arguments)
 },{"dup":2}],11:[function(require,module,exports){
 
 },{}],12:[function(require,module,exports){
-arguments[4][11][0].apply(exports,arguments)
-},{"dup":11}],13:[function(require,module,exports){
+const nukeElement = require("./../Utility/nukedom")
+const apiManager = require("../../api/apiManager")
+const $ = require("jquery")
+const tagbuild = require("./../Utility/tagBuilder")
+
+const messageOutput = $("#chat-section")
+
+const messageCard = document.createElement("section")
+messageCard.classList = "message-card"
+
+const messageBase =
+document.createElement("section")
+messageBase.classList = "message-base"
+
+const messageInput = document.createElement("input")
+messageInput.setAttribute("type", "text")
+messageInput.classList = "messageInput"
+
+const sendBtn = document.createElement("button")
+sendBtn.classList = "sendBtn"
+sendBtn.textContent = "Send"
+
+messageOutput.append(messageCard)
+messageCard.append(messageBase)
+messageBase.append(messageInput)
+messageBase.append(sendBtn)
+
+
+},{"../../api/apiManager":7,"./../Utility/nukedom":9,"./../Utility/tagBuilder":10,"jquery":1}],13:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
 },{"dup":11}],14:[function(require,module,exports){
 arguments[4][11][0].apply(exports,arguments)
