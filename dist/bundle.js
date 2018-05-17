@@ -10365,6 +10365,153 @@ return jQuery;
 } );
 
 },{}],2:[function(require,module,exports){
+
+
+// tag is referring to the tag element that you wish to create, parent is referring to
+//the id of the element that you want to append the generated element from, and
+//content is the text content of the element you are adding, and id is id of the tag added
+
+const elementBuilder = (tag, parentId, content, placeholder, id) => {
+    const parentElement = document.getElementById(`${parentId}`)
+    const newTag = document.createElement(`${tag}`)
+    newTag.textContent = `${content}`
+    newTag.placeholder = `${placeholder}`
+    newTag.id =`${id}`
+    parentElement.appendChild(newTag)
+}
+module.exports = elementBuilder
+},{}],3:[function(require,module,exports){
+//accept input of username and email address, push to database with a unique id
+
+const $ = require("jquery")
+const APIManager = require("../../api/apiManager")
+
+const addUserToDb = (userName, email) => {
+    const userInfo = {
+        "userName": userName,
+        "email": email
+    }
+    APIManager.createObject(userInfo, "user")
+}
+
+module.exports = addUserToDb
+},{"../../api/apiManager":7,"jquery":1}],4:[function(require,module,exports){
+const apiManager = require("../../api/apiManager")
+const $ = require("jquery")
+const tagbuild = require("./../Utility/tagBuilder")
+const verify = require("./verify")
+
+// Start function for the login form to export
+const loginForm = function () {
+
+    // Button click opens the register form
+    $(document).ready(function() {
+        $("#loginID").on("click", function (event) {
+            console.log(event.currentTarget.id)
+            // Display order form for this animal
+            $("#user-section").empty()
+
+
+        // Create login/register form
+            tagbuild("div","user-section", "","", "form")
+            tagbuild("input", "form", "", "Please input your name", "username")
+            tagbuild("input", "form", "","Please input your email", "email")
+            tagbuild("button", "form", "Complete Login", "", "loginButton")
+
+            $("#loginButton").on("click", function (event) {
+                console.log(event.currentTarget.id)
+                let username = $("#username").val()
+                let email = $("#email").val()
+
+                console.log(username, email)
+                if (username === "" || email === "") {
+                    alert("Please fill all fields...!!!!!!")
+                    }else{
+                    // Call validation function here
+                    verify(username, email)
+                }
+
+            })
+        })
+    })
+}
+
+
+// Export the login form function
+module.exports = loginForm
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":2,"./verify":6,"jquery":1}],5:[function(require,module,exports){
+const apiManager = require("../../api/apiManager")
+const $ = require("jquery")
+const tagbuild = require("./../Utility/tagBuilder")
+
+// Wrap entire registration form in a function
+const registerForm = function () {
+    // Document Ready - Ensure DOM is fully loaded
+    $(document).ready(function () {
+        // Button click opens the register form
+        $("#registerID").on("click", function (event) {
+            console.log(event.currentTarget.id)
+            // Ensure the page is cleared
+            $("#holder").empty()
+
+
+            // Create login/register form
+            tagbuild("div", "user-section", "", "", "form")
+            tagbuild("input", "form", "", "Please input your name", "username")
+            tagbuild("input", "form", "", "Please input your email", "email")
+            tagbuild("button", "form", "Complete Registration", "", "registerButton")
+
+            $("#registerButton").on("click", function (event) {
+                console.log(event.currentTarget.id)
+                let username = $("#username").val()
+                let email = $("#email").val()
+
+                console.log(username, email)
+                if (username === "" || email === "") {
+                    alert("Please fill all fields...!!!!!!");
+                    // else
+                } // Closes if statement
+                    // {
+
+                    //         // Call validation function here
+                    // }
+
+            }) // Closes register button event listener
+
+
+        }) // Closes button on click event listener
+    }) //Closes document ready
+} // Closes registerForm function
+
+module.exports = registerForm
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":2,"jquery":1}],6:[function(require,module,exports){
+// event listener for the "submit" button on registration form
+// check inputs against the existing user data
+// if user exists , login
+// if user does not exist, add the user to the database and then login
+// redirect to landing page
+const $ = require("jquery")
+const APIManager = require("../../api/apiManager")
+const login = require("./login")
+const register = require("./register")
+const adduser = require ("./adduser")
+
+const verifyUser = (username, email) => {
+    const users = APIManager.getAllObjects("user")
+    let verified = false
+    users.foreach((user)=>{
+        if (user.userName === username){
+            verified = true
+            loggedIn(username)
+        }
+    })
+    if (verified === false ){
+        alert("Username not found, please register on Nutshell.")
+        register()
+    }
+}
+module.exports = verifyUser
+},{"../../api/apiManager":7,"./adduser":3,"./login":4,"./register":5,"jquery":1}],7:[function(require,module,exports){
 const $ = require("jquery")
 
 const APIManager = Object.create(null, {
@@ -10417,7 +10564,7 @@ const APIManager = Object.create(null, {
 module.exports = APIManager
 
 
-},{"jquery":1}],3:[function(require,module,exports){
+},{"jquery":1}],8:[function(require,module,exports){
 const $ = require("jquery")
 const tagbuild = require("./tagBuilder")
 
@@ -10428,7 +10575,7 @@ tagbuild("button", "headerID", "Login", "", "loginID")
 
 
 
-},{"./tagBuilder":5,"jquery":1}],4:[function(require,module,exports){
+},{"./tagBuilder":10,"jquery":1}],9:[function(require,module,exports){
 function nukeDom (){
     document.removeChild(document.documentElement);
 }
@@ -10440,31 +10587,17 @@ function nukeElement (id){
 }
 
 module.exports = nukeElement
-},{}],5:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
+arguments[4][2][0].apply(exports,arguments)
+},{"dup":2}],11:[function(require,module,exports){
 
-
-// tag is referring to the tag element that you wish to create, parent is referring to
-//the id of the element that you want to append the generated element from, and
-//content is the text content of the element you are adding, and id is id of the tag added
-
-const elementBuilder = (tag, parentId, content, placeholder, id) => {
-    const parentElement = document.getElementById(`${parentId}`)
-    const newTag = document.createElement(`${tag}`)
-    newTag.textContent = `${content}`
-    newTag.placeholder = `${placeholder}`
-    newTag.id =`${id}`
-    parentElement.appendChild(newTag)
-}
-module.exports = elementBuilder
-},{}],6:[function(require,module,exports){
-
-},{}],7:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],8:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],9:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],13:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],14:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],15:[function(require,module,exports){
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 const friendsInput = require("./addByClickInput")
@@ -10495,7 +10628,7 @@ const friendBtnClick = () => {
 }
 
 friendBtnClick()
-},{"../../api/apiManager":2,"./addByClickInput":11,"jquery":1}],11:[function(require,module,exports){
+},{"../../api/apiManager":7,"./addByClickInput":16,"jquery":1}],16:[function(require,module,exports){
 const $ = require("jquery")
 //const APIManager = require("../api/apiManager")
 
@@ -10545,9 +10678,9 @@ friendsInput()
 
 
 module.exports = friendsInput
-},{"jquery":1}],12:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],13:[function(require,module,exports){
+},{"jquery":1}],17:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],18:[function(require,module,exports){
 // const $ = require("jquery")
 // const APIManager = require("../api/apiManager")
 
@@ -10581,128 +10714,63 @@ arguments[4][6][0].apply(exports,arguments)
 
 // userList()
 
-},{}],14:[function(require,module,exports){
-// const $ = require("jquery")
-// const APIManager = require("../api/apiManager")
+},{}],19:[function(require,module,exports){
+const $ = require("jquery")
+const APIManager = require("../api/apiManager")
+const registerForm = require("./../DOM/user/register")
+const loginForm = require("./../DOM/user/login")
 
 // // const userSection = $("user-section")
 // console.log(APIManager.getAllObjects("user"))
 // // const userResponse = APIManager.getAllObjects("user")
 // // .then(response => userSection.append(response))
 
-// const userList = function () {
-//     // Get the animals
-//     APIManager.getAllObjects("user")
-//     .then(allUsers => {
-//         allUsers.forEach(user => {
-//         // Iterate over animal list
-//         // user.forEach(response => {
-//             // Build HTML representation for each one
-//             //  ensure purchase button is on representation
-//             console.log(user)
-//             $("#chat-section").append(
-//             `
-//                 <div class="catalogItem" id="${user.id}">
-//                     <section>
-//                         ${user.user}
-//                     </section>
-//                 </div>
-//                 `
-//             )
-//         })
-//      })
-// }
+registerForm()
+loginForm()
+
+
+const userList = function () {
+    // Get the animals
+    APIManager.getAllObjects("user")
+    .then(allUsers => {
+        allUsers.forEach(user => {
+        // Iterate over animal list
+        // user.forEach(response => {
+            // Build HTML representation for each one
+            //  ensure purchase button is on representation
+            console.log(user)
+            $("#user-section").append(
+            `
+                <div class="username" id="${user.id}">
+                    <section>
+                        ${user.user}
+                    </section>
+                </div>
+                `
+            )
+        })
+     })
+}
 
 
 // userList()
 
-},{}],15:[function(require,module,exports){
+},{"../api/apiManager":7,"./../DOM/user/login":4,"./../DOM/user/register":5,"jquery":1}],20:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],21:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],22:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],23:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],24:[function(require,module,exports){
+arguments[4][3][0].apply(exports,arguments)
+},{"../../api/apiManager":7,"dup":3,"jquery":1}],25:[function(require,module,exports){
+arguments[4][4][0].apply(exports,arguments)
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":10,"./verify":28,"dup":4,"jquery":1}],26:[function(require,module,exports){
+arguments[4][11][0].apply(exports,arguments)
+},{"dup":11}],27:[function(require,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"../../api/apiManager":7,"./../Utility/tagBuilder":10,"dup":5,"jquery":1}],28:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],16:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],17:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],18:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],19:[function(require,module,exports){
-//accept input of username and email address, push to database with a unique id
-
-const $ = require("jquery")
-const APIManager = require("../../api/apiManager")
-
-const addUserToDb = (userName, email) => {
-    const userInfo = {
-        "userName": userName,
-        "email": email
-    }
-    APIManager.createObject(userInfo, "user")
-}
-
-module.exports = addUserToDb
-},{"../../api/apiManager":2,"jquery":1}],20:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],21:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}],22:[function(require,module,exports){
-const nukeElement = require("./../Utility/nukedom")
-const apiManager = require("../../api/apiManager")
-const $ = require("jquery")
-const tagbuild = require("./../Utility/tagBuilder")
-
-
-// Button click opens the register form
-$(document).ready(function() {
-    $("#registerID").on("click", function (event) {
-        console.log(event.currentTarget.id)
-        // Display order form for this animal
-        $("#user-section").empty()
-
-
-        // Create login/register form
-        tagbuild("div","user-section", "","", "form")
-        tagbuild("input", "form", "", "Please input your name", "username")
-        tagbuild("input", "form", "","Please input your email", "email")
-        tagbuild("button", "form", "Complete Registration", "", "registerButton")
-
-        $("#registerButton").on("click", function (event) {
-            const adduser = require("./adduser")
-            let username = $("#username").val()
-            let email = $("#email").val()
-
-            console.log(username, email)
-            if (username === "" || email === "") {
-            alert("Please fill all fields...!!!!!!")
-            }else {
-                adduser(username, email)
-            }
-
-        })
-    })
-})
-},{"../../api/apiManager":2,"./../Utility/nukedom":4,"./../Utility/tagBuilder":5,"./adduser":19,"jquery":1}],23:[function(require,module,exports){
-// event listener for the "submit" button on registration form
-// check inputs against the existing user data
-// if user exists , login
-// if user does not exist, add the user to the database and then login
-// redirect to landing page
-const $ = require("jquery")
-const APIManager = require("../../api/apiManager")
-const login = require("./login")
-const adduser = require ("./adduser")
-
-const verifyUser = (username, email) => {
-    const users = APIManager.getAllObjects("user")
-    let verified = false
-    users.forech((user)=>{
-        if (user.userName === input){
-            verified = true
-            login(username)
-        }
-    })
-    if (verified === false ){
-        registerUser( username, email)
-        login(username)
-    }
-}
-module.exports = verifyUser
-},{"../../api/apiManager":2,"./adduser":19,"./login":20,"jquery":1}]},{},[2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,3,4,5]);
+},{"../../api/apiManager":7,"./adduser":24,"./login":25,"./register":27,"dup":6,"jquery":1}]},{},[7,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,8,9,10]);
