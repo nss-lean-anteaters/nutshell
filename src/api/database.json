@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "user": [
     {
       "id": 2,
@@ -35,4 +36,41 @@
   "chat": [
     {}
   ]
+=======
+    "user": [
+        {
+            "id": 2,
+            "user": "Ronnie Young"
+                },
+                {
+                    "id": 3,
+                    "user": "Ronnie Cater"
+                        }    
+    ],
+    "friendship": [
+        {
+
+        }
+    ],
+    "tasks": [
+        {
+
+        }
+    ],
+    "articles": [
+        {
+
+        }
+    ],
+    "events": [
+        {
+
+        }
+    ],
+    "chat": [
+        {
+            
+        }
+    ]
+>>>>>>> 6feafa1b5b02427e337036554543b9a3ff5e2802
 }
