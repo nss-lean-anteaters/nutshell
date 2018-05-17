@@ -7,19 +7,23 @@ const verify = require("./verify")
 const loginForm = function () {
 
     // Button click opens the register form
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#loginID").on("click", function (event) {
             console.log(event.currentTarget.id)
             // Display order form for this animal
-            $("#user-section").empty()
+            $("#holder").empty()
+            $("#headerID").empty()
 
 
-        // Create login/register form
-            tagbuild("div","user-section", "","", "form")
-            tagbuild("input", "form", "", "Please input your name", "username")
-            tagbuild("input", "form", "","Please input your email", "email")
-            tagbuild("button", "form", "Complete Login", "", "loginButton")
 
+            // Create login/register form
+            const userSection = document.getElementById("user-section")
+            console.log(userSection)
+
+                tagbuild("div", "user-section", "", "", "form")
+                tagbuild("input", "form", "", "Please input your name", "username")
+                tagbuild("input", "form", "", "Please input your email", "email")
+                tagbuild("button", "form", "Complete Login", "", "loginButton")
             $("#loginButton").on("click", function (event) {
                 console.log(event.currentTarget.id)
                 let username = $("#username").val()
@@ -28,7 +32,7 @@ const loginForm = function () {
                 console.log(username, email)
                 if (username === "" || email === "") {
                     alert("Please fill all fields...!!!!!!")
-                    }else{
+                } else {
                     // Call validation function here
                     verify(username, email)
                 }
