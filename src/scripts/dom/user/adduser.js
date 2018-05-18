@@ -3,14 +3,12 @@
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 
-const registerUser = (userName, email) => {
-    const users = APIManager.getAllObjects("user")
-    const userID = users.length + 1
-    users.push({
-        userID,
-        userName,
-        email,
-    })
+const addUserToDb = (userName, email) => {
+    const userInfo = {
+        "userName": userName,
+        "email": email
+    }
+    APIManager.createObject(userInfo, "user")
 }
 
-module.exports = registerUser
+module.exports = addUserToDb

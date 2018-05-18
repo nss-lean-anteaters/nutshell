@@ -12,7 +12,7 @@ const APIManager = Object.create(null, {
         }
     },
     createObject: {
-        value: function (obj, endpoint) {
+        value: function (obj,endpoint) {
             return $.ajax({
                 url: `http://localhost:8088/${endpoint}`,
                 method: "POST",
