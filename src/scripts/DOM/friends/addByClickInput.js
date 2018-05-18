@@ -5,18 +5,18 @@ const $ = require("jquery")
 //console.log(APIManager.getAllObjects("friendship"))
 // const userResponse = APIManager.getAllObjects("user")
 // .then(response => userSection.append(response))
-const friendsOutput = $("#friends-section")
+const friendsOutput = $("#addFriends-section")
 
 const friendsInput = () => {
-const friendSearchInput = document.createElement("input")
-friendSearchInput.classList = "friend-field"
-friendSearchInput.setAttribute("id", "friendId")
-friendSearchInput.placeholder = "Search Friends"
-friendsOutput.append(friendSearchInput)
-const friendSearchButton = document.createElement("button")
-friendSearchButton.classList = "friend-button"
-friendSearchButton.textContent = "Search"
-friendsOutput.append(friendSearchButton)
+    const friendSearchInput = document.createElement("input")
+    friendSearchInput.classList = "friend-field"
+    friendSearchInput.setAttribute("id", "friendId")
+    friendSearchInput.placeholder = "Search Users"
+    friendsOutput.append(friendSearchInput)
+    const friendSearchButton = document.createElement("button")
+    friendSearchButton.classList = "friend-button"
+    friendSearchButton.textContent = "Search"
+    friendsOutput.append(friendSearchButton)
 }
 
 friendsInput()
