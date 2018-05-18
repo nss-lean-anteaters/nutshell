@@ -11,13 +11,17 @@ const adduser = require ("./adduser")
 
 const verifyUser = (username, email) => {
     const users = APIManager.getAllObjects("user")
-    let verified = false
-    users.foreach((user)=>{
-        if (user.userName === username){
-            verified = true
-            loggedIn(username)
-        }
+    .then((allUsers) => {
+        allUsers.foreach((user)=>{
+            if (user.userName === username){
+                verified = true
+                loggedIn(username)
+            }
+        })
     })
+    console.log(users)
+    console.log(APIManager.getAllObjects("user"))
+    let verified = false
     if (verified === false ){
         alert("Username not found, please register on Nutshell.")
         register()
