@@ -17,9 +17,9 @@ const verifyUser = (userName) => {
         console.log(allUsers)
         allUsers.forEach((user)=>{
             let verified = false
-            if (user.userName === username){
+            if (user.userName === userName){
                 verified = true
-                loggedIn(username)
+                loggedIn(userName)
             }
             if (verified === false ){
                 alert("Username not found, please register on Nutshell.")
