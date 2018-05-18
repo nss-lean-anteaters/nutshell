@@ -1,29 +1,9 @@
 {
-  "user": [
-    {
-      "id": 1,
-      "user": "Jake Carter"
-    },
-    {
-      "id": 2,
-      "user": "Hayley Landsberg"
-    },
-    {
-      "id": 3,
-      "user": "David Paul"
-    },
-    {
-      "id": 4,
-      "user": "Deanna Vickers"
-    },
-    {
-      "id": 5,
-      "user": "Ronnie Young"
-    }
-  ],
+  "user": [],
   "friendship": [],
   "tasks": [],
   "articles": [],
   "events": [],
   "chat": []
+
 }

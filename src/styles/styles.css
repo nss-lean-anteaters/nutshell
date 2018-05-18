@@ -20,8 +20,9 @@
 
 #user-section {
     display: flex;
-    width: 30%;
+    width: %;
     margin: auto;
+}
 
 .message-card{
     border: 1px solid black;
@@ -33,3 +34,25 @@
     margin: 10px;
 
 }
+
+#nsHeader{
+    display: flex;
+    flex-direction: row;
+}
+
+#registerID{
+    padding: 5px;
+    margin: 10px;
+    height: 30px;
+}
+
+#loginID{
+    padding: 5px;
+    margin: 10px;
+    height: 30px;
+
+}
+
+
+
+

@@ -9,6 +9,9 @@ const addUserToDb = (userName, email) => {
         "email": email
     }
     APIManager.createObject(userInfo, "user")
+    .then((result) => {
+        console.log("reponse for add user", result)
+    })
 }
 
 module.exports = addUserToDb

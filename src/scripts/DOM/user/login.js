@@ -11,7 +11,7 @@ const loginForm = function () {
         $("#loginID").on("click", function (event) {
             console.log(event.currentTarget.id)
             // Display order form for this animal
-            $("#holder").empty()
+            $("#holder").hide()
             $("#headerID").empty()
 
 

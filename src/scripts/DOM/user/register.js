@@ -1,6 +1,8 @@
 const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
-const tagbuild = require("./../Utility/tagBuilder")
+const tagbuild = require("../Utility/tagBuilder")
+const addUser = require("./adduser")
+const loggedin = require("./loggedin")
 
 // Wrap entire registration form in a function
 const registerForm = function () {
@@ -10,15 +12,15 @@ const registerForm = function () {
         $("#registerID").on("click", function (event) {
             console.log(event.currentTarget.id)
             // Ensure the page is cleared
-            $("#holder").empty()
+            $("#holder").hide()
             $("#headerID").empty()
 
 
 
             // Create login/register form
             tagbuild("div", "user-section", "", "", "form")
-            tagbuild("input", "form", "", "Please input your name", "username")
-            tagbuild("input", "form", "", "Please input your email", "email")
+            tagbuild("input", "form", "", "name", "username")
+            tagbuild("input", "form", "", "email - ex: myname@email.com", "email")
             tagbuild("button", "form", "Complete Registration", "", "registerButton")
 
             $("#registerButton").on("click", function (event) {
@@ -31,7 +33,8 @@ const registerForm = function () {
                 if (username === "" || email === "") {
                     alert("Please fill all fields...!!!!!!");
                 }else {
-                    adduser(username, email)
+                    addUser(username,email)
+                    loggedin(username)
                 }
             }) // Closes register button event listener
 
