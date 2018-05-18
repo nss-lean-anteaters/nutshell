@@ -13,7 +13,7 @@ const friendBtnClick = () => {
                     const addFriendCard = document.createElement("section")
                     addFriendCard.classList = "friend-card"
                     const addFriendText = document.createElement("p")
-                    addFriendText.textContent = element.user
+                    addFriendText.textContent = element.userName
                     addFriendCard.append(addFriendText)
                     const addFriendBtn = document.createElement("button")
                     addFriendBtn.classList = "addFriend-button"
@@ -26,7 +26,7 @@ const friendBtnClick = () => {
                         $("#friend-section").empty()
                         const frienduser = {
                             "friendId": event.currentTarget.id,
-                            "friend": element.user,
+                            "friend": element.userName,
                             "usernameId": 1
                         }
                         APIManager.createObject(frienduser, "friendship")
