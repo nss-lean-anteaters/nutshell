@@ -10522,7 +10522,7 @@ const register = require("./register")
 const adduser = require ("./adduser")
 const loggedIn = require ("./loggedin")
 
-const verifyUser = (username) => {
+const verifyUser = (userName) => {
     const users = APIManager.getAllObjects("user")
     // .then(users => console.log(users))
     .then((allUsers) => {
