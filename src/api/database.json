@@ -1,9 +1,14 @@
 {
-  "user": [],
+  "user": [
+    {
+      "userName": "david",
+      "email": "dfp333@gmail.com",
+      "id": 1
+    }
+  ],
   "friendship": [],
   "tasks": [],
   "articles": [],
   "events": [],
   "chat": []
-
 }
