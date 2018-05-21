@@ -1,48 +1,6 @@
 {
-  "user": [
-    {
-      "userName": "Deanna",
-      "email": "deanna2000@gmail.com",
-      "id": 1
-    },
-    {
-      "userName": "Hayley",
-      "email": "didfjiojsf",
-      "id": 2
-    },
-    {
-      "userName": "drrcrv",
-      "email": "hhyh",
-      "id": 3
-    },
-    {
-      "userName": "phaedra",
-      "email": "email@email.com",
-      "id": 4
-    },
-    {
-      "userName": "annaed",
-      "email": "deanna2000@gmail.com",
-      "id": 5
-    },
-    {
-      "userName": "Deanna",
-      "email": "deanna2000@gmail.com",
-      "id": 6
-    },
-    {
-      "userName": "David",
-      "email": "Sdifojdisofj",
-      "id": 7
-    }
-  ],
-  "friendship": [
-    {
-      "friendId": "1",
-      "usernameId": "1",
-      "id": 1
-    }
-  ],
+  "user": [],
+  "friendship": [],
   "tasks": [],
   "articles": [],
   "events": [],

@@ -8,23 +8,24 @@ const APIManager = require("../../api/apiManager")
 const login = require("./login")
 const register = require("./register")
 const adduser = require ("./adduser")
+const loggedIn = require ("./loggedin")
 
-const verifyUser = (username, email) => {
+const verifyUser = (userName) => {
     const users = APIManager.getAllObjects("user")
+    // .then(users => console.log(users))
     .then((allUsers) => {
-        allUsers.foreach((user)=>{
-            if (user.userName === username){
+        console.log(allUsers)
+        allUsers.forEach((user)=>{
+            let verified = false
+            if (user.userName === userName){
                 verified = true
-                loggedIn(username)
+                loggedIn(userName)
+            }
+            if (verified === false ){
+                alert("Username not found, please register on Nutshell.")
+                register()
             }
         })
     })
-    console.log(users)
-    console.log(APIManager.getAllObjects("user"))
-    let verified = false
-    if (verified === false ){
-        alert("Username not found, please register on Nutshell.")
-        register()
-    }
 }
 module.exports = verifyUser
