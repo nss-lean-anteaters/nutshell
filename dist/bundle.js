@@ -10381,6 +10381,33 @@ const elementBuilder = (tag, parentId, content, placeholder, id) => {
 }
 module.exports = elementBuilder
 },{}],3:[function(require,module,exports){
+const $ = require("jquery")
+const tagbuild = require("./../Utility/tagBuilder")
+
+
+const addtodo = (userName) => {
+    const todoinput = document.getElementById("to-do-section")
+    const todoContainer = document.createElement("div")
+    todoContainer.id = "todo-input"
+    todoContainer.textContent = "here's where the todo stuff is going"
+    todoinput.appendChild(todoContainer)
+    tagbuild("input", "todo-input", "", "Add todo item here", "todoform")
+    tagbuild("input", "todo-input", "", "Add due date here", "tododateform")
+    tagbuild("button", "todo-input", "add", "", "todobutton")
+    $("#todobutton").on(click,() =>{
+        const APIManager = require("../../api/apiManager")
+        let todoItem = {
+            "userid": userName,
+            "taskname":$("#todoform").val(),
+            "timestamp": Date.now,
+            "duedate": $("#tododateform").val() }
+        APIManager.createObject(todoItem, "tasks")
+
+    })
+}
+
+module.exports = addtodo
+},{"../../api/apiManager":9,"./../Utility/tagBuilder":2,"jquery":1}],4:[function(require,module,exports){
 //accept input of username and email address, push to database with a unique id
 
 const $ = require("jquery")
@@ -10398,23 +10425,23 @@ const addUserToDb = (userName, email) => {
 }
 
 module.exports = addUserToDb
-},{"../../api/apiManager":8,"jquery":1}],4:[function(require,module,exports){
+},{"../../api/apiManager":9,"jquery":1}],5:[function(require,module,exports){
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 const tagbuild = require("../Utility/tagBuilder")
-
+const addtodo = require("../todo/addtodo")
 
 const loggedIn = (userName) => {
     $("#holder").show()
     $("#user-section").hide()
     tagbuild("p", "nsHeader", "Welcome " + username.value, "", "welcome")
     // call all functions to build opening page here with the input userName
-
+    addtodo(userName)
 
     // yay!
 }
 module.exports = loggedIn
-},{"../../api/apiManager":8,"../Utility/tagBuilder":2,"jquery":1}],5:[function(require,module,exports){
+},{"../../api/apiManager":9,"../Utility/tagBuilder":2,"../todo/addtodo":3,"jquery":1}],6:[function(require,module,exports){
 const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
 const tagbuild = require("./../Utility/tagBuilder")
@@ -10462,7 +10489,7 @@ const loginForm = function () {
 
 // Export the login form function
 module.exports = loginForm
-},{"../../api/apiManager":8,"./../Utility/tagBuilder":2,"./verify":7,"jquery":1}],6:[function(require,module,exports){
+},{"../../api/apiManager":9,"./../Utility/tagBuilder":2,"./verify":8,"jquery":1}],7:[function(require,module,exports){
 const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
 const tagbuild = require("../Utility/tagBuilder")
@@ -10509,7 +10536,7 @@ const registerForm = function () {
 } // Closes registerForm function
 
 module.exports = registerForm
-},{"../../api/apiManager":8,"../Utility/tagBuilder":2,"./adduser":3,"./loggedin":4,"jquery":1}],7:[function(require,module,exports){
+},{"../../api/apiManager":9,"../Utility/tagBuilder":2,"./adduser":4,"./loggedin":5,"jquery":1}],8:[function(require,module,exports){
 // event listener for the "submit" button on registration form
 // check inputs against the existing user data
 // if user exists , login
@@ -10541,7 +10568,7 @@ const verifyUser = (userName) => {
     })
 }
 module.exports = verifyUser
-},{"../../api/apiManager":8,"./adduser":3,"./loggedin":4,"./login":5,"./register":6,"jquery":1}],8:[function(require,module,exports){
+},{"../../api/apiManager":9,"./adduser":4,"./loggedin":5,"./login":6,"./register":7,"jquery":1}],9:[function(require,module,exports){
 const $ = require("jquery")
 
 const APIManager = Object.create(null, {
@@ -10594,7 +10621,7 @@ const APIManager = Object.create(null, {
 module.exports = APIManager
 
 
-},{"jquery":1}],9:[function(require,module,exports){
+},{"jquery":1}],10:[function(require,module,exports){
 const $ = require("jquery")
 const tagbuild = require("./tagBuilder")
 
@@ -10607,7 +10634,7 @@ tagbuild("button", "headerID", "Login", "", "loginID")
 
 
 
-},{"./tagBuilder":11,"jquery":1}],10:[function(require,module,exports){
+},{"./tagBuilder":12,"jquery":1}],11:[function(require,module,exports){
 function nukeDom (){
     document.removeChild(document.documentElement);
 }
@@ -10619,11 +10646,11 @@ function nukeElement (id){
 }
 
 module.exports = nukeElement
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 arguments[4][2][0].apply(exports,arguments)
-},{"dup":2}],12:[function(require,module,exports){
+},{"dup":2}],13:[function(require,module,exports){
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 const nukeElement = require("./../Utility/nukedom")
 const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
@@ -10652,11 +10679,11 @@ messageBase.append(messageInput)
 messageBase.append(sendBtn)
 
 
-},{"../../api/apiManager":8,"./../Utility/nukedom":10,"./../Utility/tagBuilder":11,"jquery":1}],14:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],15:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],16:[function(require,module,exports){
+},{"../../api/apiManager":9,"./../Utility/nukedom":11,"./../Utility/tagBuilder":12,"jquery":1}],15:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],16:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],17:[function(require,module,exports){
 const $ = require("jquery")
 const APIManager = require("../../api/apiManager")
 const friendsInput = require("./addByClickInput")
@@ -10672,7 +10699,7 @@ const friendBtnClick = () => {
                     const addFriendCard = document.createElement("section")
                     addFriendCard.classList = "friend-card"
                     const addFriendText = document.createElement("p")
-                    addFriendText.textContent = element.user
+                    addFriendText.textContent = element.userName
                     addFriendCard.append(addFriendText)
                     const addFriendBtn = document.createElement("button")
                     addFriendBtn.classList = "addFriend-button"
@@ -10685,7 +10712,7 @@ const friendBtnClick = () => {
                         $("#friend-section").empty()
                         const frienduser = {
                             "friendId": event.currentTarget.id,
-                            "friend": element.user,
+                            "friend": element.userName,
                             "usernameId": 1
                         }
                         APIManager.createObject(frienduser, "friendship")
@@ -10713,7 +10740,7 @@ const friendBtnClick = () => {
 friendBtnClick()
 
 module.exports = friendBtnClick
-},{"../../api/apiManager":8,"./addByClickInput":17,"jquery":1}],17:[function(require,module,exports){
+},{"../../api/apiManager":9,"./addByClickInput":18,"jquery":1}],18:[function(require,module,exports){
 const $ = require("jquery")
 //const APIManager = require("../api/apiManager")
 
@@ -10763,9 +10790,9 @@ friendsInput()
 
 
 module.exports = friendsInput
-},{"jquery":1}],18:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],19:[function(require,module,exports){
+},{"jquery":1}],19:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],20:[function(require,module,exports){
 // const $ = require("jquery")
 // const APIManager = require("../api/apiManager")
 
@@ -10799,7 +10826,7 @@ arguments[4][12][0].apply(exports,arguments)
 
 // userList()
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 const $ = require("jquery")
 const APIManager = require("../api/apiManager")
 const registerForm = require("./../DOM/user/register")
@@ -10840,24 +10867,24 @@ const userList = function () {
 
 // userList()
 
-},{"../api/apiManager":8,"./../DOM/user/login":5,"./../DOM/user/register":6,"jquery":1}],21:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],22:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],23:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],24:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],25:[function(require,module,exports){
+},{"../api/apiManager":9,"./../DOM/user/login":6,"./../DOM/user/register":7,"jquery":1}],22:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],23:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],24:[function(require,module,exports){
 arguments[4][3][0].apply(exports,arguments)
-},{"../../api/apiManager":8,"dup":3,"jquery":1}],26:[function(require,module,exports){
+},{"../../api/apiManager":9,"./../Utility/tagBuilder":12,"dup":3,"jquery":1}],25:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],26:[function(require,module,exports){
 arguments[4][4][0].apply(exports,arguments)
-},{"../../api/apiManager":8,"../Utility/tagBuilder":11,"dup":4,"jquery":1}],27:[function(require,module,exports){
+},{"../../api/apiManager":9,"dup":4,"jquery":1}],27:[function(require,module,exports){
 arguments[4][5][0].apply(exports,arguments)
-},{"../../api/apiManager":8,"./../Utility/tagBuilder":11,"./verify":30,"dup":5,"jquery":1}],28:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"dup":12}],29:[function(require,module,exports){
+},{"../../api/apiManager":9,"../Utility/tagBuilder":12,"../todo/addtodo":24,"dup":5,"jquery":1}],28:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
-},{"../../api/apiManager":8,"../Utility/tagBuilder":11,"./adduser":25,"./loggedin":26,"dup":6,"jquery":1}],30:[function(require,module,exports){
+},{"../../api/apiManager":9,"./../Utility/tagBuilder":12,"./verify":31,"dup":6,"jquery":1}],29:[function(require,module,exports){
+arguments[4][13][0].apply(exports,arguments)
+},{"dup":13}],30:[function(require,module,exports){
 arguments[4][7][0].apply(exports,arguments)
-},{"../../api/apiManager":8,"./adduser":25,"./loggedin":26,"./login":27,"./register":29,"dup":7,"jquery":1}]},{},[8,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,9,10,11]);
+},{"../../api/apiManager":9,"../Utility/tagBuilder":12,"./adduser":26,"./loggedin":27,"dup":7,"jquery":1}],31:[function(require,module,exports){
+arguments[4][8][0].apply(exports,arguments)
+},{"../../api/apiManager":9,"./adduser":26,"./loggedin":27,"./login":28,"./register":30,"dup":8,"jquery":1}]},{},[9,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,10,11,12]);
