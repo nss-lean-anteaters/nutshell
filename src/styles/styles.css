@@ -20,7 +20,7 @@
 
 #user-section {
     display: flex;
-    width: %;
+    width: 30%;
     margin: auto;
 }
 
@@ -53,6 +53,12 @@
 
 }
 
+#welcome{
+    margin: 20px;
+}
 
+#logoImage{
+    float: left;
+}
 
 
