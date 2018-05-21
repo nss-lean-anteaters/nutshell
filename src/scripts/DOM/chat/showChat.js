@@ -3,8 +3,7 @@ const apiManager = require("../../api/apiManager")
 const $ = require("jquery")
 const tagbuild = require("./../Utility/tagBuilder")
 
-//just a mock user to test my code
-const mockUserId = 500
+const chatFun = (userName) => {
 
 const messageOutput = $("#chat-section")
 
@@ -18,10 +17,14 @@ const messageList = $("<section style='scroll' class='sent'>").appendTo(messageC
 const messageBase = $("<section class='message-base'>").appendTo(messageCard)
 
 //writing the messages to the dom. used a fun so I could call later in code
-const messageDom = (messageText) => {
+const messageDom = (userId, messageText) => {
     const sentMessage = document.createElement("div")
-    sentMessage.classList = "sent"
-    sentMessage.textContent = messageText
+    let sentUser = document.createElement("p")
+    let messageContent = document.createElement("p")
+    sentUser.textContent = userId
+    messageContent = messageText
+    // sentMessage.append(sentUser)
+    sentMessage.append(messageContent)
     messageList.append(sentMessage)
 }
 
@@ -43,7 +46,7 @@ const loadMessages = () =>{
     if (rawMessageDB){
         messageDB = JSON.parse(rawMessageDB)
         messageDB.sentMessages.forEach(message => {
-            messageDom(message.text)
+            messageDom(userName, message.text)
         });
     } else {
         messageDB = {
@@ -53,28 +56,29 @@ const loadMessages = () =>{
 }
 loadMessages()
 
-const sendMessage = () => {
+const sendMessage = (userName) => {
     //sets messageText as messageInput which is the user input
     const messageText = messageInput.val()
-    //if statement checks for user input and then pushes it to the messageDB. Once I figure out the userDB save situation I can change userId to userId: `${user.id}` (I think)
+    // const sender = sentMessages.userId
+    //if statement checks for user input and then pushes it to the messageDB
     if (messageText) {
         messageDB.sentMessages.push({
-            userId: mockUserId,
+            userId: userName,
             text: messageText
         })
         localStorage.setItem(
             "messageDB",
             JSON.stringify(messageDB)
         )
-        loadMessages()
     }
+        loadMessages()
     //this clears the messageInput field so you don't have to delete the text you just typed and sent
     messageInput.val("")
 }
 const sendBtn = document.createElement("button")
 sendBtn.classList = "sendBtn"
 sendBtn.addEventListener("click", function(){
-    sendMessage()
+    sendMessage(userName)
 }
 )
 
@@ -90,3 +94,6 @@ sendBtn.textContent = "Send"
 messageBase.append(messageInput)
 messageBase.append(sendBtn)
 
+}
+
+module.exports = chatFun
