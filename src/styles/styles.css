@@ -1,3 +1,8 @@
+body{
+    background-color: oldlace;
+    font-family: 'Roboto', sans-serif;
+    opacity: .8;
+}
 .friend-card {
     border: 1px solid black;
     margin: 10px;
@@ -15,6 +20,8 @@
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
+    background-color: tan;
+
 }
 
 
@@ -59,6 +66,20 @@
 
 #logoImage{
     float: left;
+    margin-right: 20px;
 }
 
+button {
+    background-color: rgba(241, 174, 85, 0.678);
+    color:rgba(250, 249, 247, 0.85);
+    margin: 5px;
+    height: 22px;
+    border: solid rgb(165, 112, 42,.7) 1px;
+}
 
+input{
+   height: 20px;
+   margin: 4px;
+   background-color: rgba(237, 243, 247, 0.808)
+
+}
