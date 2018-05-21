@@ -27,6 +27,7 @@
 .message-card{
     border: 1px solid black;
     margin: 10px;
+    background-color: gray
 }
 
 .message-base{
@@ -51,6 +52,11 @@
     margin: 10px;
     height: 30px;
 
+}
+
+.sent{
+    border: 1px solid black;
+    margin: 10px;
 }
 
 
